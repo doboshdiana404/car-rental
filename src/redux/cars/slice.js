@@ -7,6 +7,8 @@ const carsSlice = createSlice({
     cars: [],
     loading: false,
     error: null,
+    page: 1,
+    totalPages: 1,
   },
   reducers: {},
   extraReducers: builder => {
@@ -17,7 +19,11 @@ const carsSlice = createSlice({
       })
       .addCase(fetchCars.fulfilled, (state, action) => {
         state.loading = false;
-        state.cars = action.payload;
+        state.page = Number(action.payload.page);
+        state.totalPages = Number(action.payload.totalPages);
+        const newCars = action.payload.cars.filter(newCar => !state.cars.some(existingCar => existingCar.id === newCar.id));
+
+        state.cars = [...state.cars, ...newCars];
       })
       .addCase(fetchCars.rejected, (state, action) => {
         state.loading = false;

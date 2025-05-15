@@ -16,8 +16,7 @@ const CatalogItem = ({ car }) => {
         <span>{city}</span>
         <span>{country}</span>
         <span>{car.rentalCompany}</span>
-      </p>
-      <p className={s.descriptionCar}>
+        <br />
         <span>{car.type}</span>
         <span>{car.mileage}</span>
       </p>

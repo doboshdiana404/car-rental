@@ -4,7 +4,6 @@ import { selectAllCars } from '../../redux/cars/selectors';
 import s from './CatalogList.module.css';
 const CatalogList = () => {
   const cars = useSelector(selectAllCars);
-
   return (
     <div>
       <ul className={s.carsList}>
