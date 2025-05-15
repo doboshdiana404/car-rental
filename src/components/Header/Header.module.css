@@ -1,0 +1,30 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+}
+.logoLink {
+  padding: 26px 0;
+}
+
+.navigationList {
+  padding: 24px 0;
+  display: flex;
+  gap: 32px;
+}
+
+.headerLink {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+}
+.active {
+  color: var(--button-hover);
+}
+
+.sectionHeader {
+  margin-bottom: 4px;
+  background-color: var(--badges);
+}
+.headerLink:hover {
+  color: var(--button);
+}

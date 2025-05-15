@@ -1,0 +1,48 @@
+.imgCar {
+  border-radius: 14px;
+  object-fit: cover;
+  margin-bottom: 16px;
+}
+.carInfoBtn {
+  width: 276px;
+}
+
+.namePriceWrap {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--main);
+}
+.carTitle {
+  font-size: 16px;
+  color: var(--main);
+  font-weight: 500;
+}
+.carTitle span {
+  color: var(--button);
+}
+
+.descriptionCar span {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.33333;
+  color: var(--gray);
+  position: relative;
+  padding-right: 6px; /* відступ під лінію */
+  margin-right: 6px;
+}
+.descriptionCar span::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 16px;
+  background-color: var(--gray-light);
+}
+.descriptionCar span:last-child::before {
+  display: none;
+}
