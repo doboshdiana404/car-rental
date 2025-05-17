@@ -11,6 +11,9 @@
   color: var(--white);
   padding-bottom: 60px;
   text-align: center;
+  position: relative;
+  z-index: 1;
+  transition: transform 0.5s ease-in-out;
 }
 
 .heroBtn {
@@ -30,4 +33,8 @@
   line-height: 1.33333;
   margin-top: 16px;
   margin-bottom: 40px;
+}
+
+.hero.slideUp {
+  transform: translateY(-110%);
 }
