@@ -1,3 +1,5 @@
 .searchPanel {
   margin-bottom: 56px;
+  display: flex;
+  gap: 16px;
 }

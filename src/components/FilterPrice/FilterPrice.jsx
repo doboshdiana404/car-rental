@@ -8,7 +8,7 @@ const FilterPrice = ({ onPriceChange }) => {
       </label>
       <select id="price-select" onChange={e => onPriceChange(e.target.value)} className={s.selectPrice}>
         <option value="" className={s.defaultOption}>
-          Choose max price
+          Choose a price
         </option>
         <option value="30">$30</option>
         <option value="40">$40</option>
