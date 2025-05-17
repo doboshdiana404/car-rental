@@ -10,7 +10,7 @@ const Hero = () => {
 
     setTimeout(() => {
       navigate('/catalog');
-    }, 600);
+    }, 400);
   };
 
   return (
