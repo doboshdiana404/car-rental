@@ -7,10 +7,31 @@ const carsSlice = createSlice({
     cars: [],
     loading: false,
     error: null,
-    page: 1,
+    page: -1,
     totalPages: 1,
+    filters: {
+      brand: '',
+      maxPrice: '',
+    },
   },
-  reducers: {},
+  reducers: {
+    resetCars: state => {
+      state.cars = [];
+      state.page = 1;
+      state.totalPages = 1;
+      state.error = null;
+      state.loading = false;
+    },
+    setBrand: (state, action) => {
+      // ← NEW
+      state.filters.brand = action.payload;
+    },
+    setMaxPrice: (state, action) => {
+      // ← NEW
+      state.filters.maxPrice = action.payload;
+    },
+  },
+
   extraReducers: builder => {
     builder
       .addCase(fetchCars.pending, state => {
@@ -21,7 +42,12 @@ const carsSlice = createSlice({
         state.loading = false;
         state.page = Number(action.payload.page);
         state.totalPages = Number(action.payload.totalPages);
-        const newCars = action.payload.cars.filter(newCar => !state.cars.some(existingCar => existingCar.id === newCar.id));
+
+        const incomingCars = Array.isArray(action.payload.cars) ? action.payload.cars : [];
+
+        const filteredCars = action.payload.maxPrice ? incomingCars.filter(car => Number(car.rentalPrice) <= Number(action.payload.maxPrice)) : incomingCars;
+
+        const newCars = filteredCars.filter(newCar => !state.cars.some(existing => existing.id === newCar.id));
 
         state.cars = [...state.cars, ...newCars];
       })
@@ -33,3 +59,4 @@ const carsSlice = createSlice({
 });
 
 export const carsReducer = carsSlice.reducer;
+export const { resetCars, setBrand, setMaxPrice } = carsSlice.actions;

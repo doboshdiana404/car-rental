@@ -23,7 +23,7 @@ body {
   line-height: 1.5;
   background-color: #f9f9f9;
   color: #111;
-  min-height: 100vh;
+  /* min-height: 100vh; */
 }
 
 img,
@@ -56,11 +56,6 @@ a {
   outline-offset: 2px;
 }
 
-#root {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
 table {
   border-collapse: collapse;
   border-spacing: 0;

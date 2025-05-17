@@ -18,7 +18,7 @@ const CatalogItem = ({ car }) => {
         <span>{car.rentalCompany}</span>
         <br />
         <span>{car.type}</span>
-        <span>{car.mileage}</span>
+        <span>{car.mileage} km</span>
       </p>
       <button className={s.carInfoBtn}>Read more</button>
     </>

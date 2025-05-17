@@ -3,7 +3,7 @@ import './App.css';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import Header from './components/Header/Header';
-import Catalog from './pages/Catalog';
+import Catalog from './pages/Catalog/Catalog';
 
 function App() {
   return (
