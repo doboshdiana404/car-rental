@@ -1,5 +1,13 @@
 .searchPanel {
-  margin-bottom: 56px;
+  padding-bottom: 56px;
+  padding-top: 84px;
   display: flex;
   gap: 16px;
+  align-items: end;
+}
+.searchBtn {
+  padding-right: 51px;
+  padding-left: 51px;
+  line-height: 1.25;
+  height: 44px;
 }

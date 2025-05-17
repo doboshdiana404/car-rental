@@ -6,6 +6,7 @@ const CarSearchPanel = ({ onBrandChange, onPriceChange }) => {
     <div className={s.searchPanel}>
       <FilterBrand onBrandChange={onBrandChange} />
       <FilterPrice onPriceChange={onPriceChange} />
+      <button className={s.searchBtn}>Search</button>
     </div>
   );
 };
