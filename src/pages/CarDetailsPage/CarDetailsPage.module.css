@@ -1,0 +1,9 @@
+.detailsPageWrap {
+  display: flex;
+  gap: 72px;
+}
+
+.mainDetailsPageWrap {
+  padding-top: 84px;
+  padding-bottom: 104px;
+}

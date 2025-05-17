@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCars } from '../../redux/cars/operations';
 import { resetCars, setBrand, setMaxPrice } from '../../redux/cars/slice';
@@ -12,30 +12,28 @@ const Catalog = () => {
   const dispatch = useDispatch();
   const cars = useSelector(selectAllCars);
   const loading = useSelector(selectLoading);
-  const selectedBrand = useSelector(state => state.cars.filters.brand);
-  const maxPrice = useSelector(state => state.cars.filters.maxPrice);
+
+  const [draftBrand, setDraftBrand] = useState(null);
+  const [draftPrice, setDraftPrice] = useState(null);
   useEffect(() => {
-    dispatch(resetCars());
     dispatch(fetchBrands());
-    dispatch(fetchCars({ page: 1, brand: selectedBrand, maxPrice }));
-  }, [dispatch, selectedBrand, maxPrice]);
-
-  const handleBrandChange = value => {
-    dispatch(setBrand(value));
     dispatch(resetCars());
-    dispatch(fetchCars({ page: 1, brand: value, maxPrice }));
+    dispatch(fetchCars({ page: 1 }));
+  }, [dispatch]);
+  const handleSearch = () => {
+    dispatch(setBrand(draftBrand));
+    dispatch(setMaxPrice(draftPrice));
+    dispatch(resetCars());
+    dispatch(fetchCars({ page: 1, brand: draftBrand, maxPrice: draftPrice }));
   };
 
-  const handlePriceChange = value => {
-    dispatch(setMaxPrice(value));
-    dispatch(resetCars());
-    dispatch(fetchCars({ page: 1, brand: selectedBrand, maxPrice: value }));
-  };
+  const handleBrandChange = setDraftBrand;
+  const handlePriceChange = setDraftPrice;
   const isEmpty = !loading && cars.length === 0;
 
   return (
     <div className="container" style={{ paddingBottom: '80px' }}>
-      <CarSearchPanel onBrandChange={handleBrandChange} onPriceChange={handlePriceChange} />
+      <CarSearchPanel selectedBrand={draftBrand} selectedPrice={draftPrice} onBrandChange={handleBrandChange} onPriceChange={handlePriceChange} onSearch={handleSearch} />
       {isEmpty ? (
         <p style={{ fontSize: '18px', marginTop: '20px' }}>No cars found with selected filters.</p>
       ) : (

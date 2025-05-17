@@ -1,0 +1,60 @@
+.rightMoreInfoContainer {
+  width: 460px;
+}
+
+.nameCar {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: var(--main);
+}
+.nameCar span {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--gray);
+  margin-left: 16px;
+}
+.itemWrap {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cityMileageWrap {
+  display: flex;
+  gap: 16px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+.rentalPrice {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.33333;
+  color: var(--button);
+  margin-bottom: 32px;
+}
+.infoSubTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.infoDescription {
+  line-height: 1.25;
+  margin-bottom: 68px;
+}
+.listWrap {
+  margin-bottom: 110px;
+}
+.infoList {
+  line-height: 1.25;
+  font-weight: 500;
+}
+
+.infoList li:not(:last-child) {
+  margin-bottom: 16px;
+}

@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchCars } from './operations';
+import { fetchCarById, fetchCars } from './operations';
 
 const carsSlice = createSlice({
   name: 'cars',
@@ -13,6 +13,7 @@ const carsSlice = createSlice({
       brand: '',
       maxPrice: '',
     },
+    selectedCar: null,
   },
   reducers: {
     resetCars: state => {
@@ -23,11 +24,9 @@ const carsSlice = createSlice({
       state.loading = false;
     },
     setBrand: (state, action) => {
-      // ← NEW
       state.filters.brand = action.payload;
     },
     setMaxPrice: (state, action) => {
-      // ← NEW
       state.filters.maxPrice = action.payload;
     },
   },
@@ -52,6 +51,19 @@ const carsSlice = createSlice({
         state.cars = [...state.cars, ...newCars];
       })
       .addCase(fetchCars.rejected, (state, action) => {
+        state.loading = false;
+        state.error = action.payload;
+      })
+      .addCase(fetchCarById.pending, state => {
+        state.loading = true;
+        state.error = null;
+        state.selectedCar = null;
+      })
+      .addCase(fetchCarById.fulfilled, (state, action) => {
+        state.loading = false;
+        state.selectedCar = action.payload;
+      })
+      .addCase(fetchCarById.rejected, (state, action) => {
         state.loading = false;
         state.error = action.payload;
       });

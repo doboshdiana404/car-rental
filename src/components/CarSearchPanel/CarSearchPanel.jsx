@@ -1,12 +1,14 @@
 import FilterBrand from '../FilterBrand/FilterBrand';
 import FilterPrice from '../FilterPrice/FilterPrice';
 import s from './CarSearchPanel.module.css';
-const CarSearchPanel = ({ onBrandChange, onPriceChange }) => {
+const CarSearchPanel = ({ selectedBrand, onBrandChange, selectedPrice, onPriceChange, onSearch }) => {
   return (
     <div className={s.searchPanel}>
-      <FilterBrand onBrandChange={onBrandChange} />
-      <FilterPrice onPriceChange={onPriceChange} />
-      <button className={s.searchBtn}>Search</button>
+      <FilterBrand value={selectedBrand} onBrandChange={onBrandChange} />
+      <FilterPrice value={selectedPrice} onPriceChange={onPriceChange} />
+      <button className={s.searchBtn} onClick={onSearch}>
+        Search
+      </button>
     </div>
   );
 };

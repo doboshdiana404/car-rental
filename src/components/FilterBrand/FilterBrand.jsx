@@ -4,10 +4,11 @@ import style from './FilterBrand.module.css';
 import { useEffect, useRef, useState } from 'react';
 import Icons from '../../../public/icons.svg';
 
-const FilterBrand = ({ onBrandChange }) => {
+const FilterBrand = ({ value = null, onBrandChange }) => {
   const brands = useSelector(selectBrands);
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState('');
+  const [selectedValue, setSelectedValue] = useState(value);
+
   const dropdownRef = useRef(null);
 
   useEffect(() => {
@@ -21,7 +22,9 @@ const FilterBrand = ({ onBrandChange }) => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
-
+  useEffect(() => {
+    setSelectedValue(value);
+  }, [value]);
   const handleSelect = option => {
     setSelectedValue(option);
     onBrandChange(option);
@@ -43,7 +46,7 @@ const FilterBrand = ({ onBrandChange }) => {
         aria-haspopup="listbox"
         aria-expanded={isOpen}
       >
-        {selectedValue || 'Choose a brand'}
+        {selectedValue === null ? 'Choose a brand' : selectedValue === '' ? 'All brands' : selectedValue}{' '}
         <span className={`${style.arrow} ${isOpen ? style.arrowUp : ''}`}>
           <svg width="16" height="16">
             <use href={`${Icons}#icon-chevron-down`}></use>
@@ -54,10 +57,10 @@ const FilterBrand = ({ onBrandChange }) => {
       {isOpen && (
         <div className={style.optionsList} role="listbox">
           <div
-            className={`${style.option} ${selectedValue === 'all' ? style.selected : ''}`}
-            onClick={() => handleSelect('all')}
+            className={`${style.option} ${selectedValue === '' ? style.selected : ''}`}
+            onClick={() => handleSelect('')}
             role="option"
-            aria-selected={selectedValue === 'all'}
+            aria-selected={selectedValue === ''}
             tabIndex={-1}
           >
             All brands
