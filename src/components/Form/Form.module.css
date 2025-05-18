@@ -1,0 +1,77 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 640px;
+  padding: 32px;
+  border-radius: 10px;
+  margin-top: 40px;
+  border: 1px solid #dadde1;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.formInput,
+.formTextarea {
+  padding: 12px 20px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 4px;
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.rentalBtn {
+  padding: 12px 51px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  width: 156px;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 2px;
+}
+
+.errorInput {
+  border-color: red;
+}
+.btnWrapForm {
+  display: flex;
+  justify-content: center;
+}
+.formTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+}
+.formDescription {
+  color: var(--gray);
+  margin-top: 8px;
+}
+.formInputWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.formInput::placeholder {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--gray);
+}
+.placeholder {
+  color: #888; /* сірий як плейсхолдер */
+}

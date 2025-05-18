@@ -12,6 +12,8 @@ const carsSlice = createSlice({
     filters: {
       brand: '',
       maxPrice: '',
+      minMileage: '',
+      maxMileage: '',
     },
     selectedCar: null,
   },
@@ -28,6 +30,12 @@ const carsSlice = createSlice({
     },
     setMaxPrice: (state, action) => {
       state.filters.maxPrice = action.payload;
+    },
+    setMinMileage: (state, action) => {
+      state.filters.minMileage = action.payload;
+    },
+    setMaxMileage: (state, action) => {
+      state.filters.maxMileage = action.payload;
     },
   },
 
@@ -71,4 +79,4 @@ const carsSlice = createSlice({
 });
 
 export const carsReducer = carsSlice.reducer;
-export const { resetCars, setBrand, setMaxPrice } = carsSlice.actions;
+export const { resetCars, setBrand, setMaxPrice, setMaxMileage, setMinMileage } = carsSlice.actions;

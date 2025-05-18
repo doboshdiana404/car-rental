@@ -5,6 +5,7 @@ import NotFound from './pages/NotFound';
 import Header from './components/Header/Header';
 import Catalog from './pages/Catalog/Catalog';
 import CarDetailsPage from './pages/CarDetailsPage/CarDetailsPage';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
 
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Toaster position="top-right" />
     </>
   );
 }

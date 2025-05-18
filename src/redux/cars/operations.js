@@ -1,11 +1,12 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { api } from '../../configApi/api';
 
-export const fetchCars = createAsyncThunk('cars/fetchCars', async ({ page = 1, brand = '', maxPrice = '' }, thunkAPI) => {
+export const fetchCars = createAsyncThunk('cars/fetchCars', async ({ page = 1, brand = '', maxPrice = '', minMileage = '', maxMileage = '' }, thunkAPI) => {
   try {
     const params = { page, limit: 12 };
     if (brand && brand !== 'all') params.brand = brand;
-
+    if (minMileage) params.minMileage = minMileage;
+    if (maxMileage) params.maxMileage = maxMileage;
     const { data } = await api.get('/cars', { params });
 
     const { cars, totalPages } = Array.isArray(data) ? { cars: data, totalPages: 1 } : data;

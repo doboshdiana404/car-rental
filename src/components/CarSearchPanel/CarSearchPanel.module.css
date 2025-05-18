@@ -1,9 +1,9 @@
 .searchPanel {
   padding-bottom: 56px;
-  padding-top: 84px;
   display: flex;
   gap: 16px;
   align-items: end;
+  justify-content: center;
 }
 .searchBtn {
   padding-right: 51px;
