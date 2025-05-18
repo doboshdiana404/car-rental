@@ -11,7 +11,6 @@ const RightSideDetails = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
-  if (!car) return <p>Car not found</p>;
   const address = car.address.split(', ');
 
   return (

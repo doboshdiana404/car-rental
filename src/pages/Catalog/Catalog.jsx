@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchCars } from '../../redux/cars/operations';
 import { resetCars, setBrand, setMaxPrice } from '../../redux/cars/slice';
-import { selectAllCars, selectLoading } from '../../redux/cars/selectors';
+import { selectAllCars, selectLoading, selectTotalPages } from '../../redux/cars/selectors';
 import CarSearchPanel from '../../components/CarSearchPanel/CarSearchPanel';
 import CatalogList from '../../components/CatalogList/CatalogList';
 import LoadMore from '../../components/LoadMore/LoadMore';
@@ -12,7 +12,7 @@ const Catalog = () => {
   const dispatch = useDispatch();
   const cars = useSelector(selectAllCars);
   const loading = useSelector(selectLoading);
-
+  const totalPages = useSelector(selectTotalPages);
   const [draftBrand, setDraftBrand] = useState(null);
   const [draftPrice, setDraftPrice] = useState(null);
   const [draftMileageFrom, setDraftMileageFrom] = useState('');
@@ -27,12 +27,21 @@ const Catalog = () => {
     dispatch(setBrand(draftBrand));
     dispatch(setMaxPrice(draftPrice));
     dispatch(resetCars());
-    dispatch(fetchCars({ page: 1, brand: draftBrand, maxPrice: draftPrice, minMiileage: draftMileageFrom, maxMileage: draftMileageTo }));
+    dispatch(
+      fetchCars({
+        page: 1,
+        brand: draftBrand,
+        maxPrice: draftPrice,
+        minMileage: draftMileageFrom,
+        maxMileage: draftMileageTo,
+      })
+    );
   };
 
   const handleBrandChange = setDraftBrand;
   const handlePriceChange = setDraftPrice;
   const isEmpty = !loading && cars.length === 0;
+  const showLoadMore = cars.length > 0 && !loading && Math.ceil(cars.length / 12) < totalPages;
 
   return (
     <div className={`container ${s.catalogPage}`}>
@@ -52,7 +61,8 @@ const Catalog = () => {
       ) : (
         <>
           <CatalogList />
-          <LoadMore />
+          {showLoadMore && <LoadMore />}
+          {/* <LoadMore /> */}
         </>
       )}
     </div>

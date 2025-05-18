@@ -1,8 +1,5 @@
 :root {
-  /* Шрифти */
   --font-main: 'Manrope', sans-serif;
-
-  /* Кольори */
   --main: #101828;
   --gray: #8d929a;
   --gray-light: #dadde1;
@@ -11,8 +8,6 @@
   --white: #fff;
   --button: #3470ff;
   --button-hover: #0b44cd;
-
-  /* Інше */
   --transition-fast: 0.2s ease;
   --border-radius: 12px;
 }
@@ -86,14 +81,20 @@ img {
   display: block;
 }
 .container {
-  max-width: 1280px;
+  max-width: 320px;
   margin-inline: auto;
   padding-inline: 1rem;
   width: 100%;
   box-sizing: border-box;
 }
-/* .homePage {
-  /* height: 660px; 
-  height: 100dvh;
-  overflow: hidden;
-} */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}

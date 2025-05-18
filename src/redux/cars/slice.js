@@ -3,8 +3,10 @@ import { fetchCarById, fetchCars } from './operations';
 
 const carsSlice = createSlice({
   name: 'cars',
+
   initialState: {
     cars: [],
+    favorites: JSON.parse(localStorage.getItem('favorites')) || [],
     loading: false,
     error: null,
     page: -1,
@@ -37,6 +39,15 @@ const carsSlice = createSlice({
     setMaxMileage: (state, action) => {
       state.filters.maxMileage = action.payload;
     },
+    toggleFavorite(state, action) {
+      const carId = action.payload;
+      if (state.favorites.includes(carId)) {
+        state.favorites = state.favorites.filter(id => id !== carId);
+      } else {
+        state.favorites.push(carId);
+      }
+      localStorage.setItem('favorites', JSON.stringify(state.favorites));
+    },
   },
 
   extraReducers: builder => {
@@ -57,6 +68,9 @@ const carsSlice = createSlice({
         const newCars = filteredCars.filter(newCar => !state.cars.some(existing => existing.id === newCar.id));
 
         state.cars = [...state.cars, ...newCars];
+        if (filteredCars.length < 12) {
+          state.totalPages = state.page;
+        }
       })
       .addCase(fetchCars.rejected, (state, action) => {
         state.loading = false;
@@ -79,4 +93,4 @@ const carsSlice = createSlice({
 });
 
 export const carsReducer = carsSlice.reducer;
-export const { resetCars, setBrand, setMaxPrice, setMaxMileage, setMinMileage } = carsSlice.actions;
+export const { resetCars, setBrand, setMaxPrice, setMaxMileage, setMinMileage, toggleFavorite } = carsSlice.actions;

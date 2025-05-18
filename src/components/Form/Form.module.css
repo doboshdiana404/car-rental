@@ -21,14 +21,16 @@ label {
 .formTextarea {
   padding: 12px 20px;
   font-size: 14px;
-  border: 1px solid #ccc;
   border-radius: 8px;
   margin-top: 4px;
+  border: none;
+  background-color: var(--inputs);
 }
 
 .formTextarea {
   resize: vertical;
-  min-height: 80px;
+  height: 88px;
+  resize: none;
 }
 
 .rentalBtn {
@@ -73,5 +75,5 @@ label {
   color: var(--gray);
 }
 .placeholder {
-  color: #888; /* сірий як плейсхолдер */
+  color: #888;
 }

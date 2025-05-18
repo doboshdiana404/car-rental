@@ -1,3 +1,11 @@
 .detailImg {
   border-radius: 19px;
+  width: 320px;
+  height: 260px;
+}
+@media screen and (min-width: 1280px) {
+  .detailImg {
+    width: 640px;
+    height: 512px;
+  }
 }

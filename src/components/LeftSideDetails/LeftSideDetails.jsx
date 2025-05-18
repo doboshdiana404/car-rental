@@ -4,7 +4,6 @@ import s from './LeftSideDetails.module.css';
 import Form from '../Form/Form';
 const LeftSideDetails = () => {
   const car = useSelector(selectSelectedCar);
-  if (!car) return <p>Car not found</p>;
 
   return (
     <div>

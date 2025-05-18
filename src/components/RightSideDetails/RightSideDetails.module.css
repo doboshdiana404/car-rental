@@ -1,5 +1,5 @@
 .rightMoreInfoContainer {
-  width: 460px;
+  width: 260px;
 }
 
 .nameCar {
@@ -57,4 +57,9 @@
 
 .infoList li:not(:last-child) {
   margin-bottom: 16px;
+}
+@media screen and (min-width: 1280px) {
+  .rightMoreInfoContainer {
+    width: 460px;
+  }
 }

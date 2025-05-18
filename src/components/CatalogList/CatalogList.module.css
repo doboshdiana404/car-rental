@@ -1,6 +1,21 @@
 .carsList {
   display: grid;
-  max-width: 1200px;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 48px 32px;
+  max-width: 320px;
+  gap: 20px;
+  margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  .carsList {
+    max-width: 668px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .carsList {
+    max-width: 1200px;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px 32px;
+  }
 }

@@ -1,8 +1,9 @@
 .searchPanel {
-  padding-bottom: 56px;
+  padding-bottom: 28px;
   display: flex;
+  flex-direction: column;
   gap: 16px;
-  align-items: end;
+  align-items: center;
   justify-content: center;
 }
 .searchBtn {
@@ -10,4 +11,20 @@
   padding-left: 51px;
   line-height: 1.25;
   height: 44px;
+}
+@media screen and (min-width: 768px) {
+  .searchPanel {
+    padding-bottom: 56px;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+  }
+}
+@media screen and (min-width: 1280px) {
+  /* .searchPanel {
+    padding-bottom: 56px;
+    display: flex;
+    flex-direction: row;
+    align-items: end;
+  } */
 }

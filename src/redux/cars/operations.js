@@ -5,19 +5,20 @@ export const fetchCars = createAsyncThunk('cars/fetchCars', async ({ page = 1, b
   try {
     const params = { page, limit: 12 };
     if (brand && brand !== 'all') params.brand = brand;
-    if (minMileage) params.minMileage = minMileage;
+    if (maxPrice) params.rentalPrice_lte = maxPrice;
+    if (minMileage) params.maxMileage = minMileage;
     if (maxMileage) params.maxMileage = maxMileage;
+
     const { data } = await api.get('/cars', { params });
 
     const { cars, totalPages } = Array.isArray(data) ? { cars: data, totalPages: 1 } : data;
 
-    const filteredCars = maxPrice ? cars.filter(car => Number(car.rentalPrice) === Number(maxPrice)) : cars;
-
-    return { cars: filteredCars, page, totalPages };
+    return { cars, page, totalPages, maxPrice };
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
 });
+
 export const fetchCarById = createAsyncThunk('cars/fetchCarById', async (id, thunkAPI) => {
   try {
     const { data } = await api.get(`/cars/${id}`);

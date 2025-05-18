@@ -1,9 +1,15 @@
-.detailsPageWrap {
+/* .detailsPageWrap {
   display: flex;
   gap: 72px;
-}
+} */
 
 .mainDetailsPageWrap {
   padding-top: 84px;
   padding-bottom: 104px;
+}
+@media screen and (min-width: 1280px) {
+  .detailsPageWrap {
+    display: flex;
+    gap: 72px;
+  }
 }
