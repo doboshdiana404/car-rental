@@ -42,6 +42,13 @@ const Catalog = () => {
   const handlePriceChange = setDraftPrice;
   const isEmpty = !loading && cars.length === 0;
   const showLoadMore = cars.length > 0 && !loading && Math.ceil(cars.length / 12) < totalPages;
+  const Loader = () => {
+    return (
+      <div className={s.loaderWrapper}>
+        <div className={s.loader}></div>
+      </div>
+    );
+  };
 
   return (
     <div className={`container ${s.catalogPage}`}>
@@ -56,13 +63,14 @@ const Catalog = () => {
         draftMileageFrom={draftMileageFrom}
         draftMileageTo={draftMileageTo}
       />
-      {isEmpty ? (
+      {loading ? (
+        <Loader />
+      ) : isEmpty ? (
         <p style={{ fontSize: '18px', marginTop: '20px' }}>No cars found with selected filters.</p>
       ) : (
         <>
           <CatalogList />
           {showLoadMore && <LoadMore />}
-          {/* <LoadMore /> */}
         </>
       )}
     </div>
